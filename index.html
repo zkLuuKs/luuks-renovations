@@ -60,35 +60,66 @@ font-weight:600;
 display:inline-block;
 margin-top:15px;
 }
-/* BEFORE AFTER SLIDER */
-
+/* ====================== */
+/* BEFORE AFTER SLIDER - Fully Responsive */
 .before-after{
-position:relative;
-max-width:800px;
-margin:40px auto;
-overflow:hidden;
-border-radius:10px;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .before-after img{
-width:100%;
-display:block;
+  width: 100%;
+  height: auto;   /* keep full image visible */
+  display: block;
 }
 
 .after-img{
-position:absolute;
-top:0;
-left:0;
-width:50%;
-overflow:hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;       /* initial width of after image */
+  height: 100%;     /* match before image height */
+  object-fit: cover; /* ensure image scales properly */
 }
 
 .slider{
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-width:80%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 25px;
+}
+
+/* ====================== */
+/* MOBILE FIX */
+@media (max-width:768px){
+  .before-after {
+    width: 95%;
+    margin: 15px auto;
+  }
+
+  .after-img {
+    height: 100%;
+  }
+
+  .slider {
+    width: 90%;
+    height: 35px;
+  }
+
+  .slider::-webkit-slider-thumb,
+  .slider::-moz-range-thumb {
+    height: 30px;
+    width: 30px;
+    background: #1a73e8;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }
 /* GENERAL SECTION */
 
@@ -521,22 +552,29 @@ const totalSlides=slides.length
 const imagesPerView=3
 
 function showSlide(){
-slide.style.transform="translateX(-"+(slideIndex*(100/imagesPerView))+"%)"
+slide.style.transition = "transform 0.3s ease-in-out"; // faster transition
+  slide.style.transform = "translateX(-"+(slideIndex*(100/imagesPerView))+"%)";
 }
 
 function nextSlide(){
-if(slideIndex<totalSlides-imagesPerView){slideIndex++}
-else{slideIndex=0}
-showSlide()
+if(slideIndex < totalSlides - imagesPerView){
+    slideIndex++;
+  } else {
+    slideIndex = 0;
+  }
+  showSlide();
 }
 
 function prevSlide(){
-if(slideIndex>0){slideIndex--}
-else{slideIndex=totalSlides-imagesPerView}
-showSlide()
+if(slideIndex > 0){
+    slideIndex--;
+  } else {
+    slideIndex = totalSlides - imagesPerView;
+  }
+  showSlide();
 }
 
-let autoSlide=setInterval(nextSlide,4000)
+let autoSlide=setInterval(nextSlide,2000)
 
 const gallery=document.getElementById("galleryContainer")
 
@@ -551,8 +589,8 @@ startX=e.touches[0].clientX
 
 gallery.addEventListener("touchend",e=>{
 let endX=e.changedTouches[0].clientX
-if(startX-endX>50) nextSlide()
-if(endX-startX>50) prevSlide()
+if(startX-endX>30) nextSlide()
+if(endX-startX>30) prevSlide()
 })
 
 const elements=document.querySelectorAll(".services,form,.reviews")

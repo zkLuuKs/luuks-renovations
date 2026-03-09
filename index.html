@@ -1,67 +1,43 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LuuKs Renovations LLC</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* ========================= */
-/* THEME COLORS (EDIT HERE) */
-/* ========================= */
-
-:root{
---primary:#1a73e8;
---secondary:#ffcd00;
---dark:#333;
---background:#f8f8f8;
+/* ===================== */
+/* GENERAL STYLES - CHANGE COLORS/BG HERE */
+/* ===================== */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333; /* text color */
+  background: #f8f8f8; /* page background */
+  scroll-behavior: smooth;
+}
+header {
+  background: #1a73e8; /* header background */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header a {
+  color: white;
+  text-decoration: none;
+  background: #ffcd00; /* button background */
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 15px;
 }
 
-body{
-margin:0;
-font-family:'Montserrat',sans-serif;
-color:#333;
-background:var(--background);
-scroll-behavior:smooth;
-}
-
-/* HEADER */
-
-header{
-background:var(--primary);
-color:white;
-padding:40px 20px;
-text-align:center;
-}
-
-header h1{
-margin:0 0 10px;
-font-size:2.5em;
-}
-
-header p{
-font-size:1.2em;
-margin:5px 0;
-}
-
-header a{
-color:white;
-text-decoration:none;
-background:var(--secondary);
-padding:12px 25px;
-border-radius:5px;
-font-weight:600;
-display:inline-block;
-margin-top:15px;
-}
-/* ====================== */
-/* BEFORE AFTER SLIDER - Fully Responsive */
+/* ===================== */
+/* BEFORE / AFTER SLIDER */
+/* ===================== */
 .before-after{
   position: relative;
   width: 90%;
@@ -70,22 +46,19 @@ margin-top:15px;
   overflow: hidden;
   border-radius: 10px;
 }
-
 .before-after img{
   width: 100%;
-  height: auto;   /* keep full image visible */
+  height: auto; /* keep full image visible */
   display: block;
 }
-
 .after-img{
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;       /* initial width of after image */
-  height: 100%;     /* match before image height */
-  object-fit: cover; /* ensure image scales properly */
+  width: 50%; /* initial after width */
+  height: 100%;
+  object-fit: cover;
 }
-
 .slider{
   position: absolute;
   bottom: 10px;
@@ -94,24 +67,19 @@ margin-top:15px;
   width: 80%;
   height: 25px;
 }
-
-/* ====================== */
-/* MOBILE FIX */
+/* Mobile fix */
 @media (max-width:768px){
   .before-after {
     width: 95%;
     margin: 15px auto;
   }
-
   .after-img {
     height: 100%;
   }
-
   .slider {
     width: 90%;
     height: 35px;
   }
-
   .slider::-webkit-slider-thumb,
   .slider::-moz-range-thumb {
     height: 30px;
@@ -121,337 +89,238 @@ margin-top:15px;
     cursor: pointer;
   }
 }
-/* GENERAL SECTION */
 
-section{
-padding:50px 20px;
-max-width:1000px;
-margin:auto;
+/* ===================== */
+/* PROJECT GALLERY */
+/* ===================== */
+.gallery-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.gallery-slide {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+.gallery-slide img {
+  width: 33.333%; /* desktop: 3 images */
+  flex-shrink: 0;
+  object-fit: cover;
+}
+/* mobile: show 1 full image */
+@media (max-width:768px){
+  .gallery-slide img {
+    width: 100%;
+  }
+}
+.gallery-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.gallery-buttons button {
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 5px 12px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
-/* ========================= */
-/* GALLERY */
-/* ========================= */
+/* ===================== */
+/* SERVICES SECTION */
+/* ===================== */
+.services { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  gap: 20px; 
+  opacity:0; 
+  transform:translateY(50px); 
+  transition: all 0.8s ease-in-out; 
+}
+.service-box {
+  background: white; /* service box background */
+  padding: 30px 20px;
+  border-radius: 10px;
+  flex: 1 1 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.service-box h3 { margin-bottom: 10px; color: #1a73e8; }
 
-.gallery-container{
-position:relative;
-max-width:900px;
-margin:30px auto;
-overflow:hidden;
-border-radius:10px;
-box-shadow:0 4px 8px rgba(0,0,0,0.2);
+/* ===================== */
+/* FORM SECTION */
+/* ===================== */
+form {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  opacity:0; transform:translateY(50px); transition: all 0.8s ease-in-out;
+}
+form h2 { text-align: center; margin-bottom: 20px; color: #1a73e8; }
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+form button {
+  background: #1a73e8;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.gallery-slide{
-display:flex;
-transition:transform 0.5s ease-in-out;
+/* ===================== */
+/* REVIEWS SECTION */
+/* ===================== */
+.reviews { 
+  background: #fff3cd; 
+  padding: 40px 20px; 
+  border-radius: 10px; 
+  margin-top: 30px; 
+  opacity:0; transform:translateY(50px); transition: all 0.8s ease-in-out; 
 }
+.reviews h2 { text-align: center; color: #856404; margin-bottom: 20px; }
+.reviews p { max-width: 700px; margin: 10px auto; font-style: italic; text-align: center; }
 
-.gallery-slide img{
-width:33.33%;
-height:300px;
-object-fit:cover;
-flex-shrink:0;
+/* ===================== */
+/* FOOTER + STICKY BUTTON */
+/* ===================== */
+footer { text-align: center; padding: 20px; background: #333; color: white; }
+.sticky-estimate {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffcd00;
+  color: #1a73e8;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
+.sticky-estimate:hover { background: #ffd633; }
 
-.gallery-buttons{
-position:absolute;
-top:50%;
-width:100%;
-display:flex;
-justify-content:space-between;
-transform:translateY(-50%);
-}
-
-.gallery-buttons button{
-background:rgba(0,0,0,0.5);
-border:none;
-color:white;
-font-size:2em;
-padding:5px 12px;
-cursor:pointer;
-border-radius:50%;
-}
-
-/* ========================= */
-/* SERVICES */
-/* ========================= */
-
-.services{
-display:flex;
-flex-wrap:wrap;
-justify-content:space-around;
-gap:20px;
-opacity:0;
-transform:translateY(50px);
-transition:all 0.8s ease-in-out;
-}
-
-.service-box{
-background:white;
-padding:30px 20px;
-border-radius:10px;
-flex:1 1 200px;
-text-align:center;
-box-shadow:0 4px 8px rgba(0,0,0,0.1);
-}
-
-.service-box h3{
-margin-bottom:10px;
-color:var(--primary);
-}
-
-/* ========================= */
-/* FORM */
-/* ========================= */
-
-form{
-background:white;
-padding:30px 20px;
-border-radius:10px;
-max-width:600px;
-margin:auto;
-box-shadow:0 4px 8px rgba(0,0,0,0.1);
-opacity:0;
-transform:translateY(50px);
-transition:all 0.8s ease-in-out;
-}
-
-form h2{
-text-align:center;
-margin-bottom:20px;
-color:var(--primary);
-}
-
-form input,form textarea{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border-radius:5px;
-border:1px solid #ccc;
-font-size:1em;
-}
-
-form button{
-background:var(--primary);
-color:white;
-padding:15px 25px;
-border:none;
-border-radius:5px;
-font-size:1.1em;
-cursor:pointer;
-font-weight:600;
-}
-
-/* REVIEWS / INFO */
-
-.reviews{
-background:#fff3cd;
-padding:40px 20px;
-border-radius:10px;
-margin-top:30px;
-opacity:0;
-transform:translateY(50px);
-transition:all 0.8s ease-in-out;
-}
-
-.reviews h2{
-text-align:center;
-color:#856404;
-margin-bottom:20px;
-}
-
-.reviews p{
-max-width:700px;
-margin:10px auto;
-text-align:center;
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:20px;
-background:var(--dark);
-color:white;
-}
-
-/* STICKY BUTTON */
-
-.sticky-estimate{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-background:var(--secondary);
-color:var(--primary);
-padding:15px 25px;
-border-radius:50px;
-font-weight:600;
-font-size:1.1em;
-text-decoration:none;
-box-shadow:0 4px 8px rgba(0,0,0,0.2);
-z-index:1000;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.gallery-slide img{
-width:100%;
-}
-
-.services{
-flex-direction:column;
-align-items:center;
-}
-
-}
-
-/* IMAGE POPUP */
-
-.lightbox{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:2000;
-}
-
-.lightbox img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
-cursor:pointer;
-}
+@media (max-width:768px) { .services { flex-direction: column; align-items: center; } }
 
 </style>
-
 </head>
-
 <body>
 
 <header>
-
 <h1>LuuKs Renovations LLC</h1>
-
-<p>Vinyl Plank • Laminate • Hardwood • Tile • Stairs</p>
-
+<p>Vinyl Plank • Laminate • Hardwood • Stairs • Tile</p>
 <p>Serving Central Florida | Fully Insured | Free Estimates</p>
-
-<a href="tel:7326932481">Call/Text: (732)-693-2481</a>
-
+<a href="#estimateForm">Call/Text: (732)-693-2481</a>
 </header>
 
-<section>
-    <!-- ========================= -->
+<!-- ===================== -->
 <!-- BEFORE / AFTER SLIDER -->
-<!-- Replace the images with one of your real jobs -->
-<!-- ========================= -->
-
+<!-- ===================== -->
 <section>
-
 <h2 style="text-align:center;">Before & After</h2>
-
 <div class="before-after">
-
-<img src="before1.JPG" class="before-img">
-<img src="IMG_4721.JPG" class="after-img" id="afterImg">
-
-<input type="range" min="0" max="100" value="50" class="slider" id="compareSlider">
-
+  <img src="before1.JPG" alt="Before">
+  <img src="IMG_4721.JPG" alt="After" class="after-img" id="afterImg">
+  <input type="range" min="0" max="100" value="50" class="slider" id="compareSlider">
 </div>
-
 </section>
 
-<h2 style="text-align:center;">Our Projects</h2>
-
-<div class="gallery-container" id="galleryContainer">
-
-<div class="gallery-slide" id="gallerySlide">
-<img src="IMG_9890.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_0024.JPG " onclick="openLightbox(this.src)">
-<img src="IMG_1099.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_1302.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_1813.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_3349.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_3415.JPG"onclick="openLightbox(this.src)" >
-<img src="IMG_3417.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4241.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4628.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4638.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_3382.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4716.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4738.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_3416.JPG"onclick="openLightbox(this.src)" >
-<img src="IMG_4746.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4762.jpg" onclick="openLightbox(this.src)">
-<img src="IMG_4763.jpg" onclick="openLightbox(this.src)">
-<img src="IMG_6210.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_6212.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4721.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_6237.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_6454.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4240.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_6512.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_7813.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_4761.jpg" onclick="openLightbox(this.src)">
-<img src="IMG_8789.JPG" onclick="openLightbox(this.src)">
-<img src="IMG_8945.JPG" onclick="openLightbox(this.src)">
-
-
-</div>
-
-<div class="gallery-buttons">
-<button onclick="prevSlide()">❮</button>
-<button onclick="nextSlide()">❯</button>
-</div>
-
-</div>
-
-</section>
-
+<!-- ===================== -->
+<!-- PROJECT GALLERY -->
+<!-- ===================== -->
 <section>
-
-<h2 style="text-align:center;">Our Services</h2>
-
-<div class="services">
-
-<div class="service-box">
-<h3>Vinyl Plank Installation</h3>
-<p>Durable and waterproof flooring perfect for modern homes.</p>
+<h2 style="text-align:center;">Our Projects</h2>
+<div class="gallery-container">
+  <div class="gallery-slide" id="gallerySlide">
+    <!-- Replace src with your images -->
+<img src="IMG_9890.JPG" >
+<img src="IMG_0024.JPG " >
+<img src="IMG_1099.JPG" >
+<img src="IMG_1302.JPG" >
+<img src="IMG_1813.JPG" >
+<img src="IMG_3349.JPG" >
+<img src="IMG_3415.JPG">
+<img src="IMG_3417.JPG" >
+<img src="IMG_4241.JPG" >
+<img src="IMG_4628.JPG" >
+<img src="IMG_4638.JPG" >
+<img src="IMG_3382.JPG" >
+<img src="IMG_4716.JPG" >
+<img src="IMG_4738.JPG" >
+<img src="IMG_3416.JPG" >
+<img src="IMG_4746.JPG" >
+<img src="IMG_4762.jpg" >
+<img src="IMG_4763.jpg" >
+<img src="IMG_6210.JPG" >
+<img src="IMG_6212.JPG" >
+<img src="IMG_4721.JPG" >
+<img src="IMG_6237.JPG" >
+<img src="IMG_6454.JPG" >
+<img src="IMG_4240.JPG" >
+<img src="IMG_6512.JPG" >
+<img src="IMG_7813.JPG" >
+<img src="IMG_4761.jpg" >
+<img src="IMG_8789.JPG" >
+<img src="IMG_8945.JPG" >
+    <!-- add more images here -->
+  </div>
+  <div class="gallery-buttons">
+    <button onclick="prevSlide()">&#10094;</button>
+    <button onclick="nextSlide()">&#10095;</button>
+  </div>
 </div>
-
-<div class="service-box">
-<h3>Laminate Flooring</h3>
-<p>Stylish and durable laminate flooring with professional installation.</p>
-</div>
-
-<div class="service-box">
-<h3>Hardwood Flooring</h3>
-<p>Beautiful hardwood floors installed with precision and care.</p>
-</div>
-
-<div class="service-box">
-<h3>Tile Installation</h3>
-<p>Professional tile floor instalation.</p>
-</div>
-
-<div class="service-box">
-<h3>Stairs Installation</h3>
-<p>Upgrade your stairs with matching flooring and custom finishes.</p>
-</div>
-
-</div>
-
 </section>
 
+<!-- ===================== -->
+<!-- SERVICES -->
+<!-- ===================== -->
+<section class="services-section">
+<h2 style="text-align:center;">Our Services</h2>
+<div class="services">
+  <div class="service-box">
+    <h3>Vinyl Plank Installation</h3>
+    <p>Durable & modern vinyl flooring for any room.</p>
+  </div>
+  <div class="service-box">
+    <h3>Laminate Flooring</h3>
+    <p>Stylish laminate that looks great and lasts.</p>
+  </div>
+  <div class="service-box">
+    <h3>Hardwood Flooring</h3>
+    <p>Premium hardwood installs for lasting elegance.</p>
+  </div>
+  <div class="service-box">
+    <h3>Stairs Installation</h3>
+    <p>Upgrade your stairs with matching flooring.</p>
+  </div>
+  <div class="service-box">
+    <h3>Tile Installation</h3>
+    <p>Durable tile flooring with professional finishes.</p>
+  </div>
+</div>
+</section>
 <section>
 
 <h2 style="text-align:center;">Service Area</h2>
@@ -470,172 +339,111 @@ loading="lazy">
 
 </section>
 
-<section id="estimate">
-
+<!-- ===================== -->
+<!-- FORM -->
+<!-- ===================== -->
+<section class="form-section" id="estimateForm">
 <form action="https://formspree.io/f/xyknkvly" method="POST">
-
-<input type="hidden" name="_subject" value="New Flooring Estimate Request">
-
 <h2>Request a Free Estimate</h2>
-
 <input type="text" name="name" placeholder="Full Name" required>
-
 <input type="tel" name="phone" placeholder="Phone Number" required>
-
 <input type="text" name="city" placeholder="City" required>
-
-<input type="text" name="project" placeholder="Project Type (Vinyl, Laminate, Tile, Hardwood)" required>
-
-<textarea name="message" placeholder="Project details"></textarea>
-
+<input type="text" name="project" placeholder="Project Type (LVP, Laminate, Hardwood, Stairs, Tile)" required>
+<textarea name="message" placeholder="Additional Details or Questions" rows="4"></textarea>
 <button type="submit">Send Request</button>
-
 </form>
-
 </section>
 
+<!-- ===================== -->
+<!-- REVIEWS -->
+<!-- ===================== -->
 <section class="reviews">
-
 <h2>Customer Satisfaction</h2>
-
 <p>We take pride in delivering high quality flooring installations with attention to detail and professional service.</p>
-
-<p></p>
-
 </section>
 
-<footer>
-
-© 2026 LuuKs Renovations LLC | Call/Text: 732-693-2481
-
-</footer>
-
-<a class="sticky-estimate" href="#estimate">
-Get Free Estimate
-</a>
-
-<!-- ========================= -->
-<!-- GOOGLE REVIEWS (ADD LATER) -->
-<!-- Uncomment when you have reviews -->
-<!-- ========================= -->
-
+<!-- ===================== -->
+<!-- GOOGLE REVIEWS (COMMENTED OUT FOR LATER) -->
 <!--
-
 <section>
-
 <h2 style="text-align:center;">Google Reviews</h2>
-
 <div class="google-reviews">
-
-Replace this iframe later with your Google Business review widget 
-
 <iframe 
 src="https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID"
-width="100%"
-height="400"
-style="border:0;border-radius:10px;"
-loading="lazy">
-</iframe>
-
+width="100%" height="400" style="border:0;border-radius:10px;" loading="lazy"></iframe>
 </div>
-
 </section>
-
 -->
 
-<script>
+<footer>
+&copy; 2026 LuuKs Renovations LLC | Call/Text: 732-693-2481
+</footer>
 
-let slideIndex=0
-const slide=document.getElementById("gallerySlide")
-const slides=slide.querySelectorAll("img")
-const totalSlides=slides.length
-const imagesPerView=3
+<a class="sticky-estimate" href="#estimateForm">Get Free Estimate</a>
+
+<script>
+// =====================
+// BEFORE / AFTER SLIDER
+// =====================
+const slider = document.getElementById("compareSlider")
+const afterImg = document.getElementById("afterImg")
+if(slider){
+  slider.addEventListener("input",function(){
+    afterImg.style.width = slider.value + "%"
+  })
+}
+
+// =====================
+// GALLERY SLIDER
+// =====================
+let slideIndex = 0;
+const gallerySlide = document.getElementById("gallerySlide");
+const slides = gallerySlide.querySelectorAll("img");
+let imagesPerView = 3;
+
+function updateImagesPerView(){
+  if(window.innerWidth <= 768) imagesPerView = 1;
+  else imagesPerView = 3;
+}
 
 function showSlide(){
-slide.style.transition = "transform 0.3s ease-in-out"; // faster transition
-  slide.style.transform = "translateX(-"+(slideIndex*(100/imagesPerView))+"%)";
+  gallerySlide.style.transition = "transform 0.4s ease-in-out";
+  gallerySlide.style.transform = `translateX(-${slideIndex * (100 / imagesPerView)}%)`;
 }
 
 function nextSlide(){
-if(slideIndex < totalSlides - imagesPerView){
-    slideIndex++;
-  } else {
-    slideIndex = 0;
-  }
+  updateImagesPerView();
+  if(slideIndex < slides.length - imagesPerView) slideIndex++;
+  else slideIndex = 0;
   showSlide();
 }
 
 function prevSlide(){
-if(slideIndex > 0){
-    slideIndex--;
-  } else {
-    slideIndex = totalSlides - imagesPerView;
-  }
+  updateImagesPerView();
+  if(slideIndex > 0) slideIndex--;
+  else slideIndex = slides.length - imagesPerView;
   showSlide();
 }
 
-let autoSlide=setInterval(nextSlide,2000)
+window.addEventListener("resize",()=>{
+  updateImagesPerView();
+  showSlide();
+});
 
-const gallery=document.getElementById("galleryContainer")
-
-gallery.addEventListener("mouseenter",()=>clearInterval(autoSlide))
-gallery.addEventListener("mouseleave",()=>autoSlide=setInterval(nextSlide,4000))
-
-let startX=0
-
-gallery.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX
-})
-
-gallery.addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX
-if(startX-endX>30) nextSlide()
-if(endX-startX>30) prevSlide()
-})
-
-const elements=document.querySelectorAll(".services,form,.reviews")
-
-window.addEventListener("scroll",()=>{
-elements.forEach(el=>{
-const rect=el.getBoundingClientRect()
-if(rect.top<window.innerHeight-100){
-el.style.opacity=1
-el.style.transform="translateY(0)"
-}
-})
-})
-
-const slider = document.getElementById("compareSlider")
-const afterImg = document.getElementById("afterImg")
-
-if(slider){
-slider.addEventListener("input",function(){
-afterImg.style.width = slider.value + "%"
-})
-}
-// LIGHTBOX
-
-function openLightbox(src){
-
-let lightbox = document.createElement("div")
-lightbox.className="lightbox"
-
-let img = document.createElement("img")
-img.src = src
-
-lightbox.appendChild(img)
-
-document.body.appendChild(lightbox)
-
-lightbox.style.display="flex"
-
-lightbox.onclick=function(){
-lightbox.remove()
-}
-
-}
-
+// =====================
+// SCROLL ANIMATIONS
+// =====================
+const elements = document.querySelectorAll('.services, form, .reviews');
+window.addEventListener('scroll', () => {
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+});
 </script>
 
 </body>
-</html>S
+</html>
